@@ -187,6 +187,10 @@ jobs:
         name: Test hls-hlint-plugin test suite
         run: cabal test hls-hlint-plugin --test-options="$TEST_OPTS" || cabal test hls-hlint-plugin --test-options="$TEST_OPTS"
 
+      - if: matrix.test && matrix.ghc != '9.2' && !startsWith(matrix.ghc,'9.8')
+        name: Test hls-stan-plugin test suite
+        run: cabal test hls-stan-plugin --test-options="$TEST_OPTS" || cabal test hls-stan-plugin --test-options="$TEST_OPTS"
+
       - if: matrix.test
         name: Test hls-module-name-plugin test suite
         run: cabal test hls-module-name-plugin --test-options="$TEST_OPTS" || cabal test hls-module-name-plugin --test-options="$TEST_OPTS"
